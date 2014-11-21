@@ -30,7 +30,7 @@ model and create a new permission choosing a name and a codename.
 from global_permissions.models import GlobalPermission
 
 GlobalPermission.objects.create(name='My Perm', codename='my_perm')
-``` 
+```
 
 ## Putting into action!
 
@@ -46,7 +46,7 @@ else:
 
 If you cant to verify a permission inside some template, you can do this way:
 
-```
+```htmldjango
 {% if perms.global_permissions.my_perm_codename %}
     Yay!
 {% else %}
