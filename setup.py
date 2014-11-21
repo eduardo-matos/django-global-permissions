@@ -20,14 +20,13 @@ if sys.argv[-1] == 'publish':
     print("  git push --tags")
     sys.exit()
 
-readme = open('README.rst').read()
-history = open('HISTORY.rst').read().replace('.. :changelog:', '')
+readme = open('README.md').read()
 
 setup(
     name='django-global-permissions',
     version=version,
     description="""Implementation of permissions not related to models""",
-    long_description=readme + '\n\n' + history,
+    long_description=readme,
     author='Eduardo Matos',
     author_email='eduardo.matos.silva@gmail.com',
     url='https://github.com/eduardo-matos/django-global-permissions',
