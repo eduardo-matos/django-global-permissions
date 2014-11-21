@@ -11,7 +11,8 @@ from global_permissions.models import GlobalPermission, GlobalPermissionManager
 class TestGlobalPermissions(TestCase):
 
     def test_inherits_from_permission(self):
-        self.assertIsInstance(GlobalPermission(), Permission)
+        self.assertTrue(isinstance(GlobalPermission(), Permission),\
+                        'GlobalPermission is not an instance of Permission')
 
     def test_content_type_name(self):
         gp = GlobalPermission(codename='some_codename')
@@ -21,7 +22,9 @@ class TestGlobalPermissions(TestCase):
         self.assertEquals('global_permissions', gp.content_type.app_label)
 
     def test_default_manager_is_instance_of_global_permission_manager(self):
-        self.assertIsInstance(GlobalPermission.objects, GlobalPermissionManager)
+        self.assertTrue(isinstance(GlobalPermission.objects, GlobalPermissionManager),\
+                        'GlobalPermission default manager is not an instance of '
+                        'GlobalPermissionManager')
 
     def test_default_manager_filter_content_type_for_this_app(self):
         dummy_content_type = ContentType.objects.create(name='dummy_content_type')
