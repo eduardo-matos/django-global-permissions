@@ -35,5 +35,8 @@ install:
  - pip install -q django-nose>=1.2
  - pip install -q django-nose>=1.2
  - pip install -q coverage==3.7.1
+ - pip install -q flake8
 
-script: python runtests.py
+script:
+ - flake8 global_permissions
+ - python runtests.py
