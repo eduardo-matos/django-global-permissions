@@ -1,23 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""
-test_django-global-permissions
-------------
-
-Tests for `django-global-permissions` models module.
-"""
-
-import os
-import shutil
-import unittest
+from django.test import TestCase
 
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 from global_permissions.models import GlobalPermission, GlobalPermissionManager
 
 
-class TestGlobalPermissions(unittest.TestCase):
+class TestGlobalPermissions(TestCase):
 
     def test_inherits_from_permission(self):
         self.assertIsInstance(GlobalPermission(), Permission)
@@ -39,8 +30,3 @@ class TestGlobalPermissions(unittest.TestCase):
         Permission.objects.create(codename='my_codename', content_type=dummy_content_type)
 
         self.assertEquals(1, GlobalPermission.objects.count())
-
-    def tearDown(self):
-        Permission.objects.all().delete()
-        GlobalPermission.objects.all().delete()
-        ContentType.objects.all().delete()
