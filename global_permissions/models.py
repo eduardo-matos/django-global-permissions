@@ -4,6 +4,7 @@ import django
 from django.db import models
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
+from django.utils.translation import ugettext_lazy as _
 
 
 class GlobalPermissionManager(models.Manager):
@@ -24,6 +25,8 @@ class GlobalPermission(Permission):
 
     class Meta:
         proxy = True
+        verbose_name = _('Global Permission')
+        verbose_name_plural = _('Global Permissions')
 
     def save(self, *args, **kwargs):
         ct, created = ContentType.objects.get_or_create(
