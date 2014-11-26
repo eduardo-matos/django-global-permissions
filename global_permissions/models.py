@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
 
+import django
 from django.db import models
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 
 
 class GlobalPermissionManager(models.Manager):
-    def get_query_set(self):
+    def get_queryset(self):
         return super(GlobalPermissionManager, self).get_query_set().\
             filter(content_type__name='global_permission')
+
+
+if django.VERSION < (1, 6,):
+    GlobalPermissionManager.get_query_set =\
+        GlobalPermissionManager.get_queryset
 
 
 class GlobalPermission(Permission):
