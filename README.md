@@ -54,3 +54,15 @@ If you cant to verify a permission inside some template, you can do this way:
     Not so lucky...
 {% endif %}
 ```
+
+## Upgrade
+
+If you're upgrading from version 0.1.x to version 0.2.x, you have to manually update the old contentttype model attribute to the new one. The following script may do the trick:
+
+```python
+from django.contrib.contenttypes.models import ContentType
+
+ContentType.objects.filter(name='global_permission', app_label='global_permissions').update(model='globalpermission')
+```
+
+This change is required on django 1.7+ to avoid a prompt asking if you wanna remove staled content types after running a migration.
