@@ -9,6 +9,10 @@ from global_permissions.models import GlobalPermission, GlobalPermissionManager
 
 
 class TestGlobalPermissions(TestCase):
+    def setUp(self):
+        # for some reason the entries are not being deleted
+        # between tests
+        ContentType.objects.all().delete()
 
     def test_inherits_from_permission(self):
         self.assertTrue(isinstance(GlobalPermission(), Permission),\

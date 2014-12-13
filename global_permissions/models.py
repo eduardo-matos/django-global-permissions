@@ -30,7 +30,9 @@ class GlobalPermission(Permission):
 
     def save(self, *args, **kwargs):
         ct, created = ContentType.objects.get_or_create(
-            name='global_permission', app_label=self._meta.app_label
+            name='global_permission', app_label=self._meta.app_label,
+            model='globalpermission'
         )
+
         self.content_type = ct
         super(GlobalPermission, self).save(*args, **kwargs)
