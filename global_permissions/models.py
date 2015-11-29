@@ -8,14 +8,18 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class GlobalPermissionManager(models.Manager):
-    def get_queryset(self):
-        return super(GlobalPermissionManager, self).get_query_set().\
-            filter(content_type__name='global_permission')
-
-
-if django.VERSION < (1, 6,):
-    GlobalPermissionManager.get_query_set =\
-        GlobalPermissionManager.get_queryset
+    if django.VERSION < (1, 6,):
+        def get_query_set(self):
+            return super(GlobalPermissionManager, self).get_query_set().\
+                filter(content_type__name='global_permission')
+    elif django.VERSION < (1, 8,):
+        def get_queryset(self):
+            return super(GlobalPermissionManager, self).get_queryset().\
+                filter(content_type__name='global_permission')
+    else:
+        def get_queryset(self):
+            return super(GlobalPermissionManager, self).get_queryset().\
+                filter(content_type__model='globalpermission')
 
 
 class GlobalPermission(Permission):

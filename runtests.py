@@ -14,10 +14,20 @@ try:
         INSTALLED_APPS=[
             'django.contrib.auth',
             'django.contrib.contenttypes',
+            'django.contrib.sessions',
             'django.contrib.sites',
+            'django.contrib.admin',
             'global_permissions',
         ],
+        MIDDLEWARE_CLASSES = (
+            'django.contrib.sessions.middleware.SessionMiddleware',
+            'django.middleware.common.CommonMiddleware',
+            'django.middleware.csrf.CsrfViewMiddleware',
+            'django.contrib.auth.middleware.AuthenticationMiddleware',
+            'django.contrib.messages.middleware.MessageMiddleware',
+        ),
         SITE_ID=1,
+        ROOT_URLCONF='tests.urls',
         NOSE_ARGS=['-s', '--with-coverage', '--cover-package=global_permissions'],
     )
 
