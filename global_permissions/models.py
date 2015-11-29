@@ -33,10 +33,11 @@ class GlobalPermission(Permission):
         verbose_name_plural = _('Global Permissions')
 
     def save(self, *args, **kwargs):
-        ct, created = ContentType.objects.get_or_create(
-            name='global_permission', app_label=self._meta.app_label,
-            model='globalpermission'
-        )
+        content_type_kwargs = {'app_label': self._meta.app_label,
+                               'model': 'globalpermission'}
+        if django.VERSION < (1, 8):
+            content_type_kwargs['name'] = 'global_permission'
+        ct, created = ContentType.objects.get_or_create(**content_type_kwargs)
 
         self.content_type = ct
         super(GlobalPermission, self).save(*args, **kwargs)

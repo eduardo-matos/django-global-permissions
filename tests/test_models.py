@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import django
 from django.test import TestCase
-
+from django.db.models import Q
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 from global_permissions.models import GlobalPermission, GlobalPermissionManager
@@ -22,8 +23,13 @@ class TestGlobalPermissions(TestCase):
         gp = GlobalPermission(codename='some_codename')
         gp.save()
 
-        self.assertEquals(gp.content_type, ContentType.objects.get(name='global_permission'))
         self.assertEquals('global_permissions', gp.content_type.app_label)
+
+        lookup = Q(model='globalpermission', app_label='global_permissions')
+        if django.VERSION < (1, 8):
+            lookup &= Q(name='global_permission')
+
+        self.assertEquals(gp.content_type, ContentType.objects.get(lookup))
 
     def test_default_manager_is_instance_of_global_permission_manager(self):
         self.assertTrue(isinstance(GlobalPermission.objects, GlobalPermissionManager),\
