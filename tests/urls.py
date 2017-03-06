@@ -1,4 +1,9 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
+
+try:
+    from django.conf.urls import patterns
+except ImportError:
+    patterns = lambda _, *endpoints: endpoints
 
 from django.contrib import admin
 admin.autodiscover()

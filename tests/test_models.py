@@ -37,7 +37,7 @@ class TestGlobalPermissions(TestCase):
                         'GlobalPermissionManager')
 
     def test_default_manager_filter_content_type_for_this_app(self):
-        dummy_content_type = ContentType.objects.create(name='dummy_content_type')
+        dummy_content_type = ContentType.objects.create()
 
         GlobalPermission.objects.create(codename='my_codename')
         Permission.objects.create(codename='my_codename', content_type=dummy_content_type)

@@ -29,6 +29,14 @@ try:
         SITE_ID=1,
         ROOT_URLCONF='tests.urls',
         NOSE_ARGS=['-s', '--with-coverage', '--cover-package=global_permissions'],
+
+        # django 1.8+
+        TEMPLATES = [
+            {
+                'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                'APP_DIRS': True,
+            },
+        ],
     )
 
 
