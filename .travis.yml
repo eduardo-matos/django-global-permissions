@@ -7,10 +7,12 @@ matrix:
       env:
         - DJANGO_VERSION=1.4
         - NOSE_VERSION=1.2
+        - IGNORE_FLAKE8=1
     - python: 2.6
       env:
         - DJANGO_VERSION=1.5
         - NOSE_VERSION=1.2
+        - IGNORE_FLAKE8=1
     - python: 2.7
       env:
         - DJANGO_VERSION=1.4
@@ -50,14 +52,6 @@ matrix:
     - python: 3.3
       env:
         - DJANGO_VERSION=1.8
-        - NOSE_VERSION=1.4.4
-    - python: 3.3
-      env:
-        - DJANGO_VERSION=1.9
-        - NOSE_VERSION=1.4.4
-    - python: 3.3
-      env:
-        - DJANGO_VERSION=1.10
         - NOSE_VERSION=1.4.4
     - python: 3.4
       env:
@@ -100,5 +94,5 @@ install:
  - pip install -q flake8
 
 script:
- - flake8 global_permissions
+ - if ! [ $IGNORE_FLAKE8 ]; then flake8 global_permissions; fi;
  - python runtests.py
