@@ -81,7 +81,7 @@ matrix:
       env:
         - DJANGO_VERSION=1.9
         - NOSE_VERSION=1.4.4
-    - python: 3.4
+    - python: 3.5
       env:
         - DJANGO_VERSION=1.10
         - NOSE_VERSION=1.4.4
