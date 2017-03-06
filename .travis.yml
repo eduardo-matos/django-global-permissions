@@ -9,40 +9,82 @@ env:
   - DJANGO_VERSION=1.6
   - DJANGO_VERSION=1.7
   - DJANGO_VERSION=1.8
+  - DJANGO_VERSION=1.9
+  - DJANGO_VERSION=1.10
 
 matrix:
   include:
     - python: 2.6
       env: DJANGO_VERSION=1.4
+      env: NOSE_VERSION=1.2
     - python: 2.6
       env: DJANGO_VERSION=1.5
+      env: NOSE_VERSION=1.2
     - python: 2.7
       env: DJANGO_VERSION=1.4
+      env: NOSE_VERSION=1.2
     - python: 2.7
       env: DJANGO_VERSION=1.5
+      env: NOSE_VERSION=1.2
     - python: 2.7
       env: DJANGO_VERSION=1.6
+      env: NOSE_VERSION=1.2
     - python: 2.7
       env: DJANGO_VERSION=1.7
+      env: NOSE_VERSION=1.4.4
     - python: 2.7
       env: DJANGO_VERSION=1.8
+      env: NOSE_VERSION=1.4,4
+    - python: 2.7
+      env: DJANGO_VERSION=1.9
+      env: NOSE_VERSION=1.4.4
+    - python: 2.7
+      env: DJANGO_VERSION=1.10
+      env: NOSE_VERSION=1.4,4
     - python: 3.3
       env: DJANGO_VERSION=1.6
+      env: NOSE_VERSION=1.2
     - python: 3.3
       env: DJANGO_VERSION=1.7
+      env: NOSE_VERSION=1.4.4
     - python: 3.3
       env: DJANGO_VERSION=1.8
+      env: NOSE_VERSION=1.4,4
+    - python: 3.3
+      env: DJANGO_VERSION=1.9
+      env: NOSE_VERSION=1.4.4
+    - python: 3.3
+      env: DJANGO_VERSION=1.10
+      env: NOSE_VERSION=1.4,4
     - python: 3.4
       env: DJANGO_VERSION=1.6
+      env: NOSE_VERSION=1.2
     - python: 3.4
       env: DJANGO_VERSION=1.7
+      env: NOSE_VERSION=1.4.4
     - python: 3.4
       env: DJANGO_VERSION=1.8
+      env: NOSE_VERSION=1.4,4
+    - python: 3.4
+      env: DJANGO_VERSION=1.9
+      env: NOSE_VERSION=1.4.4
+    - python: 3.4
+      env: DJANGO_VERSION=1.10
+      env: NOSE_VERSION=1.4,4
+    - python: 3.5
+      env: DJANGO_VERSION=1.8
+      env: NOSE_VERSION=1.4,4
+    - python: 3.5
+      env: DJANGO_VERSION=1.9
+      env: NOSE_VERSION=1.4.4
+    - python: 3.4
+      env: DJANGO_VERSION=1.10
+      env: NOSE_VERSION=1.4,4
 
 install:
  - pip install -U pip
  - pip install -q --no-binary Django Django==$DJANGO_VERSION
- - pip install -q django-nose>=1.2
+ - pip install -q django-nose==$NOSE_VERSION
  - pip install -q coverage==3.7.1
  - pip install -q flake8
 
