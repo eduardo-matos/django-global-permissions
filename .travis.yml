@@ -41,6 +41,10 @@ matrix:
       env:
         - DJANGO_VERSION=1.10
         - NOSE_VERSION=1.4.4
+    - python: 2.7
+      env:
+        - DJANGO_VERSION=1.11
+        - NOSE_VERSION=1.4.4
     - python: 3.3
       env:
         - DJANGO_VERSION=1.6
@@ -73,6 +77,10 @@ matrix:
       env:
         - DJANGO_VERSION=1.10
         - NOSE_VERSION=1.4.4
+    - python: 3.4
+      env:
+        - DJANGO_VERSION=1.11
+        - NOSE_VERSION=1.4.4
     - python: 3.5
       env:
         - DJANGO_VERSION=1.8
@@ -84,6 +92,14 @@ matrix:
     - python: 3.5
       env:
         - DJANGO_VERSION=1.10
+        - NOSE_VERSION=1.4.4
+    - python: 3.5
+      env:
+        - DJANGO_VERSION=1.11
+        - NOSE_VERSION=1.4.4
+    - python: 3.6
+      env:
+        - DJANGO_VERSION=1.11
         - NOSE_VERSION=1.4.4
 
 install:
