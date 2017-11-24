@@ -11,20 +11,20 @@ Install django-global-permissions:
 pip install django-global-permissions
 ```
 
-Add to the installed apps:
+Add to installed apps:
 
 ```python
-INSTALLED_APPS += (global_permissions,)
+INSTALLED_APPS += ('global_permissions',)
 ```
 
-If you want co create a permission in the admin interface, then head to
-the Global Permissions section, then add a permission. Pick a name (which
-should be a human readable description), a code name (which will be used throughout
-the your apps), then save it.
+If you want to create a permission in the admin interface, then head to
+the Global Permissions section and click _add_. Pick a name (which should be
+human readable), a code name (which will be used throughout your apps), then save it.
+Open the user edit page and choose the permission you've just created.
 
-Then open the user edit page. Now you can choose the permission you've just created.
+![](https://user-images.githubusercontent.com/483681/33212448-58a39f36-d10a-11e7-88c9-332df034188c.gif)
 
-Otherwise if you want to create a permission programmatically, just import the GlobalPermission
+Otherwise if you want to create a permission programmatically, just import the `GlobalPermission`
 model and create a new permission choosing a name and a codename.
 
 ```python
@@ -45,7 +45,7 @@ else:
     pass # ops, you're not allowed to do that. Sorry ¯\_(ツ)_/¯
 ```
 
-If you cant to verify a permission inside some template, you can do this way:
+If you want to check a permission in a template, you can do it like this:
 
 ```htmldjango
 {% if perms.global_permissions.my_perm_codename %}
@@ -65,4 +65,4 @@ from django.contrib.contenttypes.models import ContentType
 ContentType.objects.filter(name='global_permission', app_label='global_permissions').update(model='globalpermission')
 ```
 
-This change is required on django 1.7+ to avoid a prompt asking if you wanna remove staled content types after running a migration.
+This change is required on django 1.7+ to avoid a prompt asking if you want to remove staled content types after running a migration.
