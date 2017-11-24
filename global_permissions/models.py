@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class GlobalPermissionManager(models.Manager):
     use_in_migrations = True
-    
+
     if django.VERSION < (1, 6,):
         def get_query_set(self):
             return super(GlobalPermissionManager, self).get_query_set().\
