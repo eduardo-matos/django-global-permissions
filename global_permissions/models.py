@@ -31,8 +31,8 @@ class GlobalPermission(Permission):
 
     class Meta:
         proxy = True
-        verbose_name = _('Global Permission')
-        verbose_name_plural = _('Global Permissions')
+        verbose_name = ''
+        verbose_name_plural = ''
 
     def save(self, *args, **kwargs):
         content_type_kwargs = {'app_label': self._meta.app_label,
