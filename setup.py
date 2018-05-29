@@ -3,6 +3,7 @@
 
 import os
 import sys
+import codecs
 
 import global_permissions
 
@@ -17,7 +18,7 @@ if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     sys.exit()
 
-readme = open('README.md').read()
+readme = codecs.open('README.md', 'r', 'utf-8').read()
 
 setup(
     name='django-global-permissions',
