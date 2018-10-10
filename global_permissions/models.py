@@ -4,7 +4,7 @@ import django
 from django.db import models
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _  # noqa
 
 
 class GlobalPermissionManager(models.Manager):
