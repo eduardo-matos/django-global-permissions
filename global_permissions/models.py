@@ -1,10 +1,17 @@
 # -*- coding: utf-8 -*-
 
+import sys
+
 import django
 from django.db import models
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
-from django.utils.translation import ugettext_lazy as _  # noqa
+if sys.version_info[0] == 2:
+    from django.utils.translation import ugettext_lazy as _  # noqa
+elif sys.version_info[0] == 3:
+    from django.utils.translation import gettext_lazy as _  # noqa
+else:
+    raise ImportError('Python version "{}" is unsupported.'.format(sys.version))
 
 
 class GlobalPermissionManager(models.Manager):
