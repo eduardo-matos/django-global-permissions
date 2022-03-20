@@ -1,4 +1,5 @@
 import sys
+import random
 
 try:
     from django.conf import settings
@@ -6,6 +7,7 @@ try:
     settings.configure(
         DEBUG=True,
         USE_TZ=True,
+        SECRET_KEY=str(random.getrandbits(128)),
         DATABASES={
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
@@ -19,7 +21,7 @@ try:
             'django.contrib.admin',
             'global_permissions',
         ],
-        MIDDLEWARE_CLASSES = (
+        MIDDLEWARE = (
             'django.contrib.sessions.middleware.SessionMiddleware',
             'django.middleware.common.CommonMiddleware',
             'django.middleware.csrf.CsrfViewMiddleware',

@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
 
+import platform
 import django
 from django.db import models
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
-from django.utils.translation import ugettext_lazy as _  # noqa
+
+if platform.python_version() >= '3.8':
+    from django.utils.translation import gettext_lazy as _
+else:
+    from django.utils.translation import ugettext_lazy as _
 
 
 class GlobalPermissionManager(models.Manager):

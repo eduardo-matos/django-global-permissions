@@ -1,5 +1,11 @@
+
+import platform
 from django.test import TestCase
-from django.core.urlresolvers import reverse
+
+if platform.python_version() >= '3.8':
+    from django.urls import reverse
+else:
+    from django.core.urlresolvers import reverse
 
 try:
     from django.contrib.auth import get_user_model
