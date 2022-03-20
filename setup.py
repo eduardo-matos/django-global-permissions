@@ -3,7 +3,6 @@
 
 import os
 import sys
-import codecs
 
 import global_permissions
 
@@ -18,13 +17,15 @@ if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     sys.exit()
 
-readme = codecs.open('README.md', 'r', 'utf-8').read()
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
 
 setup(
     name='django-global-permissions',
     version=version,
     description="""Implementation of permissions not related to models""",
-    long_description=readme,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author='Eduardo Matos',
     author_email='eduardo.matos.silva@gmail.com',
     url='https://github.com/eduardo-matos/django-global-permissions',
@@ -39,7 +40,7 @@ setup(
     zip_safe=False,
     keywords='django-global-permissions',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Framework :: Django',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
