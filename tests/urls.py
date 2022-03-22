@@ -1,10 +1,10 @@
 
-import platform
+import sys
 
 from django.contrib import admin
 admin.autodiscover()
 
-if platform.python_version() >= '3.8':
+if sys.version_info >= (3, 8):
     from django.urls import re_path
     
     urlpatterns = [
