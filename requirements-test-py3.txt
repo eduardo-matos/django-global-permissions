@@ -1,4 +1,4 @@
 coverage==6.2
-Django==4.0
+Django==4.0.6
 django-nose==1.4.7
 tox==3.24.5
