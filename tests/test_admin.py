@@ -1,8 +1,8 @@
 
-import sys
+import platform
 from django.test import TestCase
 
-if sys.version_info >= (3, 8):
+if platform.python_version() >= '3.8':
     from django.urls import reverse
 else:
     from django.core.urlresolvers import reverse
