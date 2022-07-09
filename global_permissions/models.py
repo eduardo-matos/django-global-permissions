@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 
+import platform
 import django
 from django.db import models
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 
-try:
+if platform.python_version() >= '3.8':
     from django.utils.translation import gettext_lazy as _
-except ImportError:
+else:
     from django.utils.translation import ugettext_lazy as _
 
 
