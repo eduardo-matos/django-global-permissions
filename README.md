@@ -1,6 +1,7 @@
 # Django Global Permissions
 
-[![Build Status](https://travis-ci.org/eduardo-matos/django-global-permissions.svg?branch=master)](https://travis-ci.org/eduardo-matos/django-global-permissions)
+[![check](https://github.com/eduardo-matos/django-global-permissions/actions/workflows/python-app-code.yml/badge.svg)](https://github.com/linux-profile/linux-profile/actions/workflows/python-app-code.yml)
+[![check](https://github.com/eduardo-matos/django-global-permissions/actions/workflows/python-app-unittest.yml/badge.svg)](https://github.com/linux-profile/linux-profile/actions/workflows/python-app-unittest.yml)
 
 Implementation of permissions not related to models
 
