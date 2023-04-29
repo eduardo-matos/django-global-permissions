@@ -1,0 +1,23 @@
+name: 📝️ Code Scan
+
+on:
+  push:
+    branches: [ "actions" ]
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: ⚙️ Set up Python 3.9
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.9"
+    - name: ⚙️ Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 --no-cache-dir
+    - name: 📝️ Code Quality with flake8
+      run: flake8 global_permissions/ --count --show-source --statistics --ignore=E501
