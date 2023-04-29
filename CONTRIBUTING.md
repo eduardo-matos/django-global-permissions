@@ -76,3 +76,15 @@ $ git push origin name-of-your-bugfix-or-feature
 ```
 
 7. Submit a pull request through the GitHub website.
+
+## Commit Style
+
+- ⚙️ FEATURE
+- 📝 PEP8
+- 📌 ISSUE
+- 🪲 BUG
+- 📘 DOCS
+- 📦 PyPI
+- ❤️️ TEST
+- ⬆️ CI/CD
+- ⚠️ SECURITY
