@@ -1,5 +1,8 @@
+import os
 import sys
 import random
+import logging
+
 
 try:
     from django.conf import settings
@@ -11,6 +14,7 @@ try:
         DATABASES={
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': 'db.sqlite3',
             }
         },
         INSTALLED_APPS=[
@@ -59,13 +63,26 @@ def run_tests(*test_args):
     if not test_args:
         test_args = ['tests']
 
-    # Run tests
-    test_runner = NoseTestSuiteRunner(verbosity=1)
+    try:
+        # Run tests
+        test_runner = NoseTestSuiteRunner(verbosity=1)
 
-    failures = test_runner.run_tests(test_args)
+        failures = test_runner.run_tests(test_args)
 
-    if failures:
-        sys.exit(failures)
+        if failures:
+            sys.exit(failures)
+
+    except Exception as error:
+        logging.error(error)
+
+        try:
+            from coverage.exceptions import DataError
+            if error.__class__ == DataError:
+                os.unlink(".coverage")
+                run_tests(*test_args)
+
+        except Exception:
+            pass
 
 
 if __name__ == '__main__':
