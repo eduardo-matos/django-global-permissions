@@ -1,4 +1,4 @@
-django==1.6
+django==3.2.24
 django-nose==1.2
 tox>=1.7.0
 coverage==3.7.1
